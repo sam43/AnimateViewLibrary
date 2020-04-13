@@ -1,0 +1,3 @@
+rootProject.name='SplashApplication'
+include ':app'
+include ':lets_go_splash'
