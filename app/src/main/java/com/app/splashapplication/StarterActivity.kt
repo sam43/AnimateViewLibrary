@@ -8,35 +8,26 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
-import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.lets_go_splash.OnAnimationListener
-import com.app.lets_go_splash.SplashAnimation
 import com.app.lets_go_splash.StarterAnimation
 import kotlinx.android.synthetic.main.activity_starter.*
 
 
 class StarterActivity : AppCompatActivity() {
 
-    private var animList: ArrayList<Animation> = ArrayList()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupStatusStyle()
         setContentView(R.layout.activity_starter)
-        //start2ndAnimation()
-        //startAnimationSet()
-        //usingLib()
         usingSplashClass()
     }
 
     private fun usingSplashClass() {
-        createAnimList()
-        SplashAnimation(
-            resList = animList,
+        StarterAnimation(
+            resList = getAnimList(),
             onAnimationListener = object : OnAnimationListener {
                 override fun onRepeat() {}
 
@@ -49,25 +40,9 @@ class StarterActivity : AppCompatActivity() {
         ).startSequentialAnimation(view = imageView)
     }
 
-    private fun usingLib() {
-        createAnimList()
-        StarterAnimation(animList = animList,
-            view = imageView,
-            onAnimationListener = object : OnAnimationListener {
-                override fun onRepeat() {}
-
-                override fun onEnd() {
-                    showToast("on End")
-                    whatToDoNext()
-                }
-
-                override fun onStartAnim() { showToast("on onStartAnim") }
-            })
-            .startAnimationSet()
-    }
-
-    private fun createAnimList() {
+    private fun getAnimList(): ArrayList<Animation> {
         // create list of animations
+        val animList: ArrayList<Animation> = ArrayList()
         val anim = AnimationUtils.loadAnimation(
             applicationContext,
             R.anim.no_animaiton
@@ -93,88 +68,8 @@ class StarterActivity : AppCompatActivity() {
         animList.add(anim2)
         animList.add(anim3)
         animList.add(anim4)
-    }
 
-    private fun startAnimationSet() {
-        // create list of animations
-        val anim = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.no_animaiton
-        )
-        val anim1 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.zoom_out_fast
-        )
-        val anim2 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.fade_in
-        )
-        val animationSet = AnimationSet(false)
-        animationSet.addAnimation(anim)
-        animationSet.addAnimation(anim1)
-        animationSet.addAnimation(anim2)
-        animationSet.startOffset = 500
-        animationSet.duration = 800
-        imageView.animation = animationSet
-
-        animationSet.setAnimationListener(object : AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-                whatToDoNext()
-            }
-
-            override fun onAnimationStart(animation: Animation?) {
-            }
-        })
-    }
-
-    private fun start0thAnimation() {
-        val anim = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.no_animaiton
-        )
-        anim.setAnimationListener(object : AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                start1stAnimation()
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-        imageView.startAnimation(anim)
-    }
-
-    private fun start1stAnimation() {
-        val anim = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.zoom_out_fast
-        )
-        anim.setAnimationListener(object : AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                start2ndAnimation()
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-        imageView.startAnimation(anim)
-    }
-
-    private fun start2ndAnimation() {
-        val anim = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.togather_animaiton
-        )
-
-        anim.setAnimationListener(object : AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {whatToDoNext()}
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-        imageView.startAnimation(anim)
+        return animList
     }
 
     private fun setupStatusStyle() {
@@ -190,8 +85,8 @@ class StarterActivity : AppCompatActivity() {
         imageView.visibility = View.GONE
         val intent = Intent(this@StarterActivity, MainActivity::class.java)
         startActivity(intent)
+        finish()
         overridePendingTransition(R.anim.whole_animation, R.anim.no_animaiton)
-        finishAfterTransition()
     }
 
 }

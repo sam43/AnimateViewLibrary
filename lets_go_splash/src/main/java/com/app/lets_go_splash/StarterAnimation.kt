@@ -1,44 +1,40 @@
 package com.app.lets_go_splash
 
-import android.content.Context
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
-import android.view.animation.AnimationSet
 
-class StarterAnimation (animList: ArrayList<Animation>,
-                        private val startOffset: Long? = 500L,
-                        private val duration: Long? = 1500L,
-                        private val view: View,
-                        private val onAnimationListener: OnAnimationListener) :
-    Animation.AnimationListener {
+class StarterAnimation(
+    private val resList: ArrayList<Animation>,
+    private val onAnimationListener: OnAnimationListener
+) {
 
-    private var animListInner: ArrayList<Animation> = animList
-
-    fun startAnimationSet() {
-        // create list of animations
-        val animationSet = AnimationSet(false)
-        animListInner.forEach { anim ->
-            //animationSet.addAnimation(anim)
+    private var animateCount = 0
+    fun startSequentialAnimation (
+        view: View
+    ) {
+        if (resList.isNotEmpty()) {
+            animateView(resList[0], view)
+        } else {
+            Log.d("SplashAnimation",
+                "Oops!, looks like you forgot to put animation list as parameter!")
         }
-        animationSet.startOffset = startOffset!!
-        animationSet.duration = duration!!
-
-        view.animation = animationSet
-        animationSet.setAnimationListener(this)
     }
 
-    override fun onAnimationRepeat(animation: Animation?) {
-        onAnimationListener?.onRepeat()
-    }
-
-    override fun onAnimationEnd(animation: Animation?) {
-        onAnimationListener.onEnd()
-        Log.d("StarterCallback", "onEnd is calling")
-    }
-
-    override fun onAnimationStart(animation: Animation?) {
-        onAnimationListener.onStartAnim()
-        Log.d("StarterCallback", "onStartAnim is calling")
+    private fun animateView(anim: Animation?, view: View) {
+        anim?.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) { onAnimationListener.onStartAnim() }
+            override fun onAnimationEnd(animation: Animation) {
+                if (animateCount < resList.size) {
+                    animateView(resList[animateCount], view)
+                    animateCount++
+                } else {
+                    onAnimationListener.onEnd()
+                    animateCount = 0
+                }
+            }
+            override fun onAnimationRepeat(animation: Animation) { onAnimationListener.onRepeat() }
+        })
+        view.startAnimation(anim)
     }
 }
