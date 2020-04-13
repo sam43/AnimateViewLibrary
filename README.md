@@ -71,5 +71,5 @@ Finally, We will be passing the list and implement the listener provided which w
         ).startSequentialAnimation(view = imageView)
 ```
 Well, That's all. Please let me know if you guys have any suggestions. Any suggestion will be appreciated. Thanks 
-
+[![](https://jitpack.io/v/sam43/SplashApplication.svg)](https://jitpack.io/#sam43/SplashApplication)
 
