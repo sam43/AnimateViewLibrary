@@ -1,5 +1,6 @@
 # SplashApplication 
 [![](https://jitpack.io/v/sam43/SplashApplication.svg)](https://jitpack.io/#sam43/SplashApplication)
+
 Developing easy to use any animation set or animation list upon a single view or mulltiple views at a time as splash screen in Android application
 
 # Alpha Release
