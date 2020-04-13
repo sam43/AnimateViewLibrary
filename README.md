@@ -1,4 +1,5 @@
-# SplashApplication
+# SplashApplication 
+[![](https://jitpack.io/v/sam43/SplashApplication.svg)](https://jitpack.io/#sam43/SplashApplication)
 Developing easy to use any animation set or animation list upon a single view or mulltiple views at a time as splash screen in Android application
 
 # Alpha Release
@@ -71,5 +72,4 @@ Finally, We will be passing the list and implement the listener provided which w
         ).startSequentialAnimation(view = imageView)
 ```
 Well, That's all. Please let me know if you guys have any suggestions. Any suggestion will be appreciated. Thanks 
-[![](https://jitpack.io/v/sam43/SplashApplication.svg)](https://jitpack.io/#sam43/SplashApplication)
 
