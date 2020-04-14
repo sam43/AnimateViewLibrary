@@ -59,7 +59,8 @@ private fun getAnimList(): ArrayList<Animation> {
 
 - **Step-4: Use the animation list for the library**
 Finally, We will be passing the list and implement the listener provided which will notify the application when animations have ended. The implementation will be like below:- 
-```StarterAnimation(
+```
+StarterAnimation(
             resList = getAnimList(),
             onAnimationListener = object : OnAnimationListener {
                 override fun onRepeat() {}
