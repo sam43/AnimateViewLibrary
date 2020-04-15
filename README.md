@@ -2,7 +2,7 @@
 
 [![codebeat badge](https://codebeat.co/badges/5dd3c16a-69e4-4f9f-976e-d6c6542feaa6)](https://codebeat.co/projects/github-com-sam43-animateviewlibrary-master) [![](https://jitpack.io/v/sam43/AnimateViewLibrary.svg)](https://jitpack.io/#sam43/AnimateViewLibrary)
 
-Developing easy to use any animation set or animation list upon a single view or mulltiple views at a time as splash screen in Android application
+Developing easy to use any animation set for splash screen or any other views in your Android application. Easy to use, so you can animate your whole app just using this library.
 
 # Alpha Release
 Alpha release of Starter Animation for android application. Feel free to suggest. Thank you
