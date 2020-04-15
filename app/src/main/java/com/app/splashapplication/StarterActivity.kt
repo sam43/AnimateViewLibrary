@@ -57,15 +57,15 @@ class StarterActivity : AppCompatActivity() {
         )
         val anim3 = AnimationUtils.loadAnimation(
             applicationContext,
-            R.anim.zoom_in
+            R.anim.sequential_animaiton
         )
         val anim4 = AnimationUtils.loadAnimation(
             applicationContext,
             R.anim.fade_in
         )
-        animList.add(anim)
-        animList.add(anim1)
-        animList.add(anim2)
+        //animList.add(anim)
+        //animList.add(anim1)
+        //animList.add(anim2)
         animList.add(anim3)
         animList.add(anim4)
 
