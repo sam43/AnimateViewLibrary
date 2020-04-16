@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.Animation
+import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,30 @@ class StarterActivity : AppCompatActivity() {
         setupStatusStyle()
         setContentView(R.layout.activity_starter)
         usingSplashClass()
+        //animationSetCheck()
+    }
+
+    private fun animationSetCheck() {
+        val animRotate = AnimationUtils.loadAnimation(this, R.anim.combo_rotate)
+        val fade_in = AnimationUtils.loadAnimation(this, R.anim.combo_fade_in)
+        val fade_out = AnimationUtils.loadAnimation(this, R.anim.combo_fade_out)
+        val s = AnimationSet(false)
+        s.addAnimation(fade_in)
+
+        animRotate.duration = 1500L
+        //animRotate.startOffset = fade_in.duration
+        s.addAnimation(animRotate)
+
+        fade_out.startOffset = fade_in.duration + animRotate.duration
+        s.addAnimation(fade_out)
+        /*val r = Runnable {
+
+        }
+        Handler().postDelayed(r, duration)*/
+
+        s.fillAfter = true
+
+        imageView.startAnimation(s)
     }
 
     private fun usingSplashClass() {
@@ -63,7 +88,7 @@ class StarterActivity : AppCompatActivity() {
             applicationContext,
             R.anim.fade_in
         )
-        //animList.add(anim)
+        animList.add(anim)
         //animList.add(anim1)
         //animList.add(anim2)
         animList.add(anim3)
