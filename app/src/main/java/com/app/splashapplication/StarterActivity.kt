@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.Animation
-import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,30 +23,6 @@ class StarterActivity : AppCompatActivity() {
         setupStatusStyle()
         setContentView(R.layout.activity_starter)
         usingSplashClass()
-        //animationSetCheck()
-    }
-
-    private fun animationSetCheck() {
-        val animRotate = AnimationUtils.loadAnimation(this, R.anim.combo_rotate)
-        val fade_in = AnimationUtils.loadAnimation(this, R.anim.combo_fade_in)
-        val fade_out = AnimationUtils.loadAnimation(this, R.anim.combo_fade_out)
-        val s = AnimationSet(false)
-        s.addAnimation(fade_in)
-
-        animRotate.duration = 1500L
-        //animRotate.startOffset = fade_in.duration
-        s.addAnimation(animRotate)
-
-        fade_out.startOffset = fade_in.duration + animRotate.duration
-        s.addAnimation(fade_out)
-        /*val r = Runnable {
-
-        }
-        Handler().postDelayed(r, duration)*/
-
-        s.fillAfter = true
-
-        imageView.startAnimation(s)
     }
 
     private fun usingSplashClass() {
@@ -60,7 +35,8 @@ class StarterActivity : AppCompatActivity() {
                     whatToDoNext()
                 }
 
-                override fun onStartAnim() {}
+                override fun onStartAnim() {
+                }
             }
         ).startSequentialAnimation(view = imageView)
     }
@@ -80,18 +56,13 @@ class StarterActivity : AppCompatActivity() {
             applicationContext,
             R.anim.zoom_out_fast
         )
-        val anim3 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.sequential_animaiton
-        )
         val anim4 = AnimationUtils.loadAnimation(
             applicationContext,
             R.anim.fade_in
         )
         animList.add(anim)
-        //animList.add(anim1)
-        //animList.add(anim2)
-        animList.add(anim3)
+        animList.add(anim1)
+        animList.add(anim2)
         animList.add(anim4)
 
         return animList
@@ -110,8 +81,8 @@ class StarterActivity : AppCompatActivity() {
         imageView.visibility = View.GONE
         val intent = Intent(this@StarterActivity, MainActivity::class.java)
         startActivity(intent)
-        finish()
         overridePendingTransition(R.anim.whole_animation, R.anim.no_animaiton)
+        finish()
     }
 
 }
