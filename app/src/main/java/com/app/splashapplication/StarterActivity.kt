@@ -35,7 +35,8 @@ class StarterActivity : AppCompatActivity() {
                     whatToDoNext()
                 }
 
-                override fun onStartAnim() {}
+                override fun onStartAnim() {
+                }
             }
         ).startSequentialAnimation(view = imageView)
     }
@@ -55,10 +56,6 @@ class StarterActivity : AppCompatActivity() {
             applicationContext,
             R.anim.zoom_out_fast
         )
-        val anim3 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.zoom_in
-        )
         val anim4 = AnimationUtils.loadAnimation(
             applicationContext,
             R.anim.fade_in
@@ -66,7 +63,6 @@ class StarterActivity : AppCompatActivity() {
         animList.add(anim)
         animList.add(anim1)
         animList.add(anim2)
-        animList.add(anim3)
         animList.add(anim4)
 
         return animList
@@ -85,8 +81,8 @@ class StarterActivity : AppCompatActivity() {
         imageView.visibility = View.GONE
         val intent = Intent(this@StarterActivity, MainActivity::class.java)
         startActivity(intent)
-        finish()
         overridePendingTransition(R.anim.whole_animation, R.anim.no_animaiton)
+        finish()
     }
 
 }
