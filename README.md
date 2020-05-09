@@ -12,6 +12,9 @@ Alpha release of Starter Animation for android application. Feel free to suggest
 - Can able to use multiple animation files on a single view.
 - Easy implementation for any activity and fragment
 
+# Demo (.GIF)
+<img src="demo(.GIF)/demo_animate_view_library.gif" width="35%">
+
 # Implementation
 - **Step-1: Add the JitPack repository to your build file**
 ```
