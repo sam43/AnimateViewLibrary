@@ -53,6 +53,10 @@ public class JavaSplashActivity extends AppCompatActivity {
 
     private ArrayList<Animation> getAnimList() {
         ArrayList<Animation> animList = new ArrayList<>();
+
+        // We need to add INSTANCE when ever we need to access a object file in kotlin from java class
+        // This denotes that CreateAnim is a singleton file and can able to have only one instance
+
         animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.no_animaiton));
         animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.rotate));
         animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.zoom_out_fast));
