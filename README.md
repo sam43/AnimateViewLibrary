@@ -1,6 +1,7 @@
 # AnimateViewLibrary
 
-[![codebeat badge](https://codebeat.co/badges/5dd3c16a-69e4-4f9f-976e-d6c6542feaa6)](https://codebeat.co/projects/github-com-sam43-animateviewlibrary-master) [![](https://jitpack.io/v/sam43/AnimateViewLibrary.svg)](https://jitpack.io/#sam43/AnimateViewLibrary)
+[![codebeat badge](https://codebeat.co/badges/5dd3c16a-69e4-4f9f-976e-d6c6542feaa6)](https://codebeat.co/projects/github-com-sam43-animateviewlibrary-master) [![](https://jitpack.io/v/sam43/AnimateViewLibrary.svg)](https://jitpack.io/#sam43/AnimateViewLibrary) [![](https://img.shields.io/badge/Protected_by-Hound-a873d1.svg)](https://houndci.com) 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Developing easy to use any animation set for splash screen or any other views in your Android application. Easy to use, so you can animate your whole app just using this library.
 
