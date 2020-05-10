@@ -42,22 +42,6 @@ We will be creating a list of animation like below and pass it to the library wi
 **Kotlin Implementation:**
 
 ```
-    private fun usingSplashClass() {
-        StarterAnimation(
-            resList = getAnimList(),
-            onAnimationListener = object : OnAnimationListener {
-                override fun onRepeat() {}
-
-                override fun onEnd() {
-                    whatToDoNext()
-                }
-
-                override fun onStartAnim() {
-                }
-            }
-        ).startSequentialAnimation(view = imageView)
-    }
-
     private fun getAnimList(): ArrayList<Animation> {
         // create list of animations
         val animList: ArrayList<Animation> = ArrayList()
@@ -75,22 +59,6 @@ We will be creating a list of animation like below and pass it to the library wi
 **Java Implementation:**
 
 ```
-     ImageView appLogo = findViewById(R.id.imageView);
-        new StarterAnimation(getAnimList(), new OnAnimationListener() {
-            @Override
-            public void onStartAnim() { // TODO::
-            }
-
-            @Override
-            public void onRepeat() { // TODO::
-            }
-
-            @Override
-            public void onEnd() {
-                // Do what to do next
-            }
-        }).startSequentialAnimation(appLogo);
-
     private ArrayList<Animation> getAnimList() {
         ArrayList<Animation> animList = new ArrayList<>();
 
@@ -111,8 +79,11 @@ We will be creating a list of animation like below and pass it to the library wi
 
 - **Step-4: Use the animation list for the library**
 Finally, We will be passing the list and implement the listener provided which will notify the application when animations have ended. The implementation will be like below:- 
+
+**Kotlin Implementation:**
+
 ```
-StarterAnimation(
+        StarterAnimation(
             resList = getAnimList(),
             onAnimationListener = object : OnAnimationListener {
                 override fun onRepeat() {}
@@ -121,9 +92,31 @@ StarterAnimation(
                     // TODO: Do what you want to do after end of animations
                 }
 
-                override fun onStartAnim() {}
+                override fun onStartAnim() {
+                }
             }
         ).startSequentialAnimation(view = imageView)
+    
+```
+
+**Java Implementation:**
+
+```
+     ImageView appLogo = findViewById(R.id.imageView);
+        new StarterAnimation(getAnimList(), new OnAnimationListener() {
+            @Override
+            public void onStartAnim() { // TODO::
+            }
+
+            @Override
+            public void onRepeat() { // TODO::
+            }
+
+            @Override
+            public void onEnd() {
+                // TODO: Do what you want to do after end of animations
+            }
+        }).startSequentialAnimation(appLogo);
 ```
 Well, That's all. Please let me know if you guys have any suggestions. Any suggestion will be appreciated. Thanks 
 
