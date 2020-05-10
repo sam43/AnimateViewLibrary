@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.lets_go_splash.CreateAnim;
 import com.app.lets_go_splash.OnAnimationListener;
 import com.app.lets_go_splash.StarterAnimation;
 
@@ -53,27 +53,10 @@ public class JavaSplashActivity extends AppCompatActivity {
 
     private ArrayList<Animation> getAnimList() {
         ArrayList<Animation> animList = new ArrayList<>();
-        Animation anim = AnimationUtils.loadAnimation(
-                getApplicationContext(),
-                R.anim.no_animaiton
-        );
-        Animation anim1 = AnimationUtils.loadAnimation(
-                getApplicationContext(),
-                R.anim.rotate
-        );
-        Animation anim2 = AnimationUtils.loadAnimation(
-                getApplicationContext(),
-                R.anim.zoom_out_fast
-        );
-        Animation anim3 = AnimationUtils.loadAnimation(
-                getApplicationContext(),
-                R.anim.fade_in
-        );
-
-        animList.add(anim);
-        animList.add(anim1);
-        animList.add(anim2);
-        animList.add(anim3);
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.no_animaiton));
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.rotate));
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.zoom_out_fast));
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.fade_in));
 
         return animList;
     }
