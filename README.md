@@ -35,31 +35,78 @@ where last release version is the `letest_version`.
 
 - **Step-3: Create list of animations to be applied to**
 We will be creating a list of animation like below and pass it to the library with the view, on which the animation will be applied. List of animation method, will be something like this :-
+
+
+
+**Kotlin Implementation:**
+
 ```
-private fun getAnimList(): ArrayList<Animation> {
-          // create list of animations
-         val animList: ArrayList<Animation> = ArrayList()
-         val anim = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.no_animaiton
-         )
-         val anim1 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.rotate
-         )
-            .
-            .
-            .
-            
-        animList.add(anim)
-        animList.add(anim1)
-            .
-            .
-            .
+    private fun usingSplashClass() {
+        StarterAnimation(
+            resList = getAnimList(),
+            onAnimationListener = object : OnAnimationListener {
+                override fun onRepeat() {}
+
+                override fun onEnd() {
+                    whatToDoNext()
+                }
+
+                override fun onStartAnim() {
+                }
+            }
+        ).startSequentialAnimation(view = imageView)
+    }
+
+    private fun getAnimList(): ArrayList<Animation> {
+        // create list of animations
+        val animList: ArrayList<Animation> = ArrayList()
+
+        animList.add(createAnimation(applicationContext, R.anim.no_animaiton))
+        animList.add(createAnimation(applicationContext, R.anim.rotate))
+        animList.add(createAnimation(applicationContext, R.anim.zoom_out_fast))
+        animList.add(createAnimation(applicationContext, R.anim.fade_in))
 
         return animList
     }
 ```
+
+
+**Java Implementation:**
+
+```
+     ImageView appLogo = findViewById(R.id.imageView);
+        new StarterAnimation(getAnimList(), new OnAnimationListener() {
+            @Override
+            public void onStartAnim() { // TODO::
+            }
+
+            @Override
+            public void onRepeat() { // TODO::
+            }
+
+            @Override
+            public void onEnd() {
+                // Do what to do next
+            }
+        }).startSequentialAnimation(appLogo);
+
+    private ArrayList<Animation> getAnimList() {
+        ArrayList<Animation> animList = new ArrayList<>();
+
+        // We need to add INSTANCE when ever we need to access a object file in kotlin from java class
+        // This denotes that CreateAnim is a singleton file and can able to have only one instance
+
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.no_animaiton));
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.rotate));
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.zoom_out_fast));
+        animList.add(CreateAnim.INSTANCE.createAnimation(getApplicationContext(), R.anim.fade_in));
+
+        return animList;
+    }
+
+```
+
+
 
 - **Step-4: Use the animation list for the library**
 Finally, We will be passing the list and implement the listener provided which will notify the application when animations have ended. The implementation will be like below:- 
