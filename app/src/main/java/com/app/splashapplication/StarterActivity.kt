@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.app.lets_go_splash.CreateAnim.createAnimation
 import com.app.lets_go_splash.OnAnimationListener
 import com.app.lets_go_splash.StarterAnimation
 import kotlinx.android.synthetic.main.activity_starter.*
@@ -44,26 +44,11 @@ class StarterActivity : AppCompatActivity() {
     private fun getAnimList(): ArrayList<Animation> {
         // create list of animations
         val animList: ArrayList<Animation> = ArrayList()
-        val anim = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.no_animaiton
-        )
-        val anim1 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.rotate
-        )
-        val anim2 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.zoom_out_fast
-        )
-        val anim4 = AnimationUtils.loadAnimation(
-            applicationContext,
-            R.anim.fade_in
-        )
-        animList.add(anim)
-        animList.add(anim1)
-        animList.add(anim2)
-        animList.add(anim4)
+
+        animList.add(createAnimation(applicationContext, R.anim.no_animaiton))
+        animList.add(createAnimation(applicationContext, R.anim.rotate))
+        animList.add(createAnimation(applicationContext, R.anim.zoom_out_fast))
+        animList.add(createAnimation(applicationContext, R.anim.fade_in))
 
         return animList
     }
